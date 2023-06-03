@@ -1,4 +1,4 @@
-package com.itheima.test;
+package com.yyf.test;
 
 import org.junit.jupiter.api.Test;
 
