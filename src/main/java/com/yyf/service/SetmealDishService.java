@@ -1,7 +1,7 @@
-package com.yyf.service;
+package com.yyf.reggie.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yyf.entity.SetmealDish;
+import com.yyf.reggie.entity.SetmealDish;
 
 public interface SetmealDishService extends IService<SetmealDish> {
 }

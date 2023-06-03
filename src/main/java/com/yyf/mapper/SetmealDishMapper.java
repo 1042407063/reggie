@@ -1,7 +1,7 @@
-package com.yyf.mapper;
+package com.yyf.reggie.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.yyf.entity.SetmealDish;
+import com.yyf.reggie.entity.SetmealDish;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
