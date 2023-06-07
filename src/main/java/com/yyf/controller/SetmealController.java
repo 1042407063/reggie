@@ -7,6 +7,7 @@ import com.yyf.dto.DishDto;
 import com.yyf.dto.SetmealDto;
 import com.yyf.entity.Category;
 import com.yyf.entity.Setmeal;
+import com.yyf.entity.SetmealDish;
 import com.yyf.service.CategoryService;
 import com.yyf.service.SetmealDishService;
 import com.yyf.service.SetmealService;
@@ -93,4 +94,56 @@ public class SetmealController {
 
         return R.success(DtoPage);
     }
+
+    /**
+     * 删除套餐
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public R<String> delete(@RequestParam List<Long> ids){
+        log.info("ids:{}",ids);
+        setmealService.removeWithDish(ids);
+        return R.success("套餐已经删除了！");
+    }
+
+    /**
+     * 修改套餐状态
+     * @param ids
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    public R<String> updateStatus(@PathVariable int status,@RequestParam List<Long> ids){
+        log.info("status:{},ids:{}",status,ids);
+        setmealService.updateStatus(status,ids);
+        return R.success("操作成功~");
+    }
+
+    /**
+     * 根据id查询套餐和菜品信息
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public R<SetmealDto> get(@PathVariable Long id){
+
+        SetmealDto setmealDto = setmealService.getByIdWithDish(id);
+
+        return R.success(setmealDto);
+    }
+
+    /**
+     * 修改套餐
+     * @param setmealDto
+     * @return
+     */
+    @PutMapping
+    public R<String> update(@RequestBody SetmealDto setmealDto){
+        log.info(setmealDto.toString());
+
+        setmealService.updateWithDish(setmealDto);
+
+        return R.success("修改套餐成功！");
+    }
+
 }
